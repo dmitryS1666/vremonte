@@ -58,6 +58,9 @@ GEM
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
       xpath (~> 3.0)
+    capybara-email (3.0.1)
+      capybara (>= 2.4, < 4.0)
+      mail
     capybara-webkit (1.15.0)
       capybara (>= 2.3, < 4.0)
       json
@@ -70,6 +73,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    database_cleaner (1.7.0)
     diff-lcs (1.3)
     erubi (1.7.1)
     execjs (2.7.0)
@@ -78,6 +82,8 @@ GEM
     factory_bot_rails (4.8.2)
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
+    faker (1.8.7)
+      i18n (>= 0.7)
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -93,6 +99,11 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (2.1.0)
+    json_spec (1.1.5)
+      multi_json (~> 1.0)
+      rspec (>= 2.0, < 4.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -120,7 +131,7 @@ GEM
       mini_portile2 (~> 2.3.0)
     parser (2.5.1.0)
       ast (~> 2.4.0)
-    pg (1.0.0)
+    pg (0.21.0)
     powerpack (0.1.1)
     public_suffix (3.0.2)
     puma (3.11.4)
@@ -161,6 +172,10 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    rspec (3.7.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -247,16 +262,22 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   byebug
+  capybara
+  capybara-email
   capybara-webkit
   coffee-rails (~> 4.2)
+  database_cleaner
   factory_bot_rails
+  faker
   jbuilder (~> 2.5)
   jquery-rails
   jquery-ui-rails
+  json_spec
+  launchy
   listen (>= 3.0.5, < 3.2)
   material_icons
   materialize-sass
-  pg (>= 0.18)
+  pg (~> 0.18)
   puma (~> 3.11)
   rails (~> 5.2.0)
   rails-controller-testing
