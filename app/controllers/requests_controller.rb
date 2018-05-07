@@ -33,7 +33,7 @@ class RequestsController < ApplicationController
 
   def destroy
     @request.destroy
-    redirect_to @request
+    redirect_to root_path
   end
 
   private

@@ -1,1 +1,13 @@
-@requests
+h3 Все заявки
+.questions-list.collection
+  - if @requests.present?
+    - @requests.each do |request|
+      .collection-item id=dom_id(request)
+        = link_to request.title, request
+  - else
+    div
+      .col.s6.offset-s3.center
+        p Заявок нет
+
+.action-btn style="bottom: 45px; right: 24px;"
+  = link_to 'Создать заявку', new_request_path

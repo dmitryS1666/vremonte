@@ -1,0 +1,17 @@
+= render 'common/errors', resource: @request
+= form_for @request do |f|
+  = f.label :title, 'Название заявки'
+  br
+  = f.text_field :title
+  br
+  = f.label :body, 'Текст заявки'
+  br
+  = f.text_field :body
+
+  = f.text_field :owner_id
+  br
+
+  = f.button class: "btn waves-effect waves-light"
+    | Создать заявку
+    i.material-icons.right
+      | send

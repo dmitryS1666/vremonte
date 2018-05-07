@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title StackoverflowSimple
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = action_cable_meta_tag
+    = csrf_meta_tags
+
+  body
+  .navbar-fixed
+    =render 'shared/nav'
+  /.flash
+    = render_flash
+  .container.main
+    = yield
+
+  .footer
+    = javascript_include_tag 'application'
+    = yield :scripts

@@ -1,0 +1,16 @@
+h3
+  =@request.title
+p
+  =@request.body
+  /=render 'common/comments', resource: @question, url: comment_question_path(@question)
+  /=render 'common/subscription', resource: @question
+
+  /=form_for @request, remote: true do |form|
+    = form.label :body, 'Обновить Заявку:'
+    = form.text_area :title
+    = form.text_area :body
+    = form.text_area :owner_id
+    = form.submit 'Сохранить'
+
+  p= link_to 'Редактировать Заявку', request_path(@request), class: 'edit-request-button', id: 'edit-request-button'
+  p= link_to 'Удалить Заявку', request_path(@request), method: :delete, data: {confirm: 'вы действительно хотите удалить заявку ?'}

@@ -1,1 +1,11 @@
-@request
+#request data-id="#{@request.id}"
+  = render @request
+  .comments
+    /p
+      - if @request.comments.present?
+        =render @request.comments.sort_by_best
+  /p
+    = form_for @request, remote: true do |f|
+      = f.label :body, 'Комментарий'
+      = f.text_area :body
+      = f.submit 'Добавить комментарий'
