@@ -1,14 +1,16 @@
 nav
   .nav-wrapper class="#{ request.subdomains.first == 'green' ? 'light-green' : 'light-blue' }"
-    = link_to 'Vremonte', root_path, class: 'brand-logo'
-    ul#nav-mobile.hide-on-med-and-down.right
-      /- if user_signed_in?
-        li
-          = current_user.email
-        li
-          = link_to 'Выйти', destroy_user_session_path, method: :delete
-      /- else
-        li
-          = link_to 'Войти', new_user_session_path
-        li
-          = link_to 'Регистрация', new_user_registration_path
+    .container
+      .row
+        = link_to 'VRemonte', root_path, class: 'brand-logo'
+        ul#nav-mobile.hide-on-med-and-down.right
+          /- if user_signed_in?
+            li
+              = current_user.email
+            li
+              = link_to 'Выйти', destroy_user_session_path, method: :delete
+          /- else
+            li
+              = link_to 'Войти', new_user_session_path
+            li
+              = link_to 'Регистрация', new_user_registration_path

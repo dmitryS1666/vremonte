@@ -1,6 +1,14 @@
 - if resource.errors.any?
   #error_explanation
-    h2 Ошибка
-    ul
-      - resource.errors.full_messages.each do |message|
-        li= message
+    h4 Ошибка
+    #alert_box.row
+      .col.s12.m12
+        .card.red.darken-1
+          .row
+            .col.s12.m10
+              .card-content.white-text
+                - resource.errors.full_messages.each do |message|
+                  p= message
+          col.s12.m2
+            i.material-icons.right#alert_close
+              | close

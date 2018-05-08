@@ -1,16 +1,24 @@
-h3
-  =@request.title
-p
-  =@request.body
-  /=render 'common/comments', resource: @question, url: comment_question_path(@question)
-  /=render 'common/subscription', resource: @question
+.row
+  .request-title
+    h4
+      =@request.title
+.row
+  .request-body
+    =@request.body
+    /=render 'common/comments', resource: @question, url: comment_question_path(@question)
+    /=render 'common/subscription', resource: @question
 
-  /=form_for @request, remote: true do |form|
-    = form.label :body, 'Обновить Заявку:'
-    = form.text_area :title
-    = form.text_area :body
-    = form.text_area :owner_id
-    = form.submit 'Сохранить'
+    /=form_for @request, remote: true do |form|
+      = form.label :body, 'Обновить Заявку:'
+      = form.text_area :title
+      = form.text_area :body
+      = form.text_area :owner_id
+      = form.submit 'Сохранить'
 
-  p= link_to 'Редактировать Заявку', request_path(@request), class: 'edit-request-button', id: 'edit-request-button'
-  p= link_to 'Удалить Заявку', request_path(@request), method: :delete, data: {confirm: 'вы действительно хотите удалить заявку ?'}
+.row
+  .col.s2
+    = link_to 'Редактировать Заявку', request_path(@request), class: 'edit-request-button', id: 'edit-request-button'
+  .col.s2
+    = link_to 'Удалить Заявку', request_path(@request), method: :delete, data: {confirm: 'вы действительно хотите удалить заявку ?'}
+  .col.s8
+    = link_to 'Добавить комментарий', request_path(@request), class: 'edit-request-button', id: 'edit-request-button'
