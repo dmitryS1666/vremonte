@@ -20,5 +20,8 @@
     = link_to 'Редактировать Заявку', request_path(@request), class: 'edit-request-button', id: 'edit-request-button'
   .col.s2
     = link_to 'Удалить Заявку', request_path(@request), method: :delete, data: {confirm: 'вы действительно хотите удалить заявку ?'}
-  .col.s8
-    = link_to 'Добавить комментарий', request_path(@request), class: 'edit-request-button', id: 'edit-request-button'
+  .col.s4
+    = link_to 'Ответить на заявку', request_path(@request), class: 'edit-request-button', id: 'edit-request-button'
+  .col.s4
+    = render 'comments/list', commentable: @request, comment: @request.comments.build
+    /= link_to 'Добавить комментарий', request_path(@request), class: 'edit-request-button', id: 'edit-request-button'

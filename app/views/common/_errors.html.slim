@@ -2,13 +2,13 @@
   #error_explanation
     h4 Ошибка
     #alert_box.row
-      .col.s12.m12
+      .col.s8.m8
         .card.red.darken-1
           .row
-            .col.s12.m10
+            .col.s8.m8
               .card-content.white-text
                 - resource.errors.full_messages.each do |message|
                   p= message
-          col.s12.m2
+          col.s8.m2
             i.material-icons.right#alert_close
               | close
