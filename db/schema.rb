@@ -17,11 +17,12 @@ ActiveRecord::Schema.define(version: 2018_05_08_214206) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
+    t.bigint "request_id"
     t.integer "commentable_id"
     t.string "commentable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+    t.index ["request_id"], name: "index_comments_on_request_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -33,4 +34,5 @@ ActiveRecord::Schema.define(version: 2018_05_08_214206) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "requests"
 end

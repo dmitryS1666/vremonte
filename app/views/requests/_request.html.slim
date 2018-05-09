@@ -1,27 +1,30 @@
 .row
-  .request-title
-    h4
-      =@request.title
+  .col.s8
+    .request-title
+      h4
+        =@request.title
 .row
-  .request-body
-    =@request.body
-    /=render 'common/comments', resource: @question, url: comment_question_path(@question)
-    /=render 'common/subscription', resource: @question
+  .col.s8
+    .request-body
+      =@request.body
+      /=render 'common/subscription', resource: @question
 
-    /=form_for @request, remote: true do |form|
-      = form.label :body, 'Обновить Заявку:'
-      = form.text_area :title
-      = form.text_area :body
-      = form.text_area :owner_id
-      = form.submit 'Сохранить'
+      /=form_for @request, remote: true do |form|
+        = form.label :body, 'Обновить Заявку:'
+        = form.text_area :title
+        = form.text_area :body
+        = form.text_area :owner_id
+        = form.submit 'Сохранить'
 
 .row
   .col.s2
-    = link_to 'Редактировать Заявку', request_path(@request), class: 'edit-request-button', id: 'edit-request-button'
+    = link_to 'Редактировать', request_path(@request), class: 'edit-request-button btn waves-effect waves-light', id: 'edit-request-button'
   .col.s2
-    = link_to 'Удалить Заявку', request_path(@request), method: :delete, data: {confirm: 'вы действительно хотите удалить заявку ?'}
+    = link_to 'Удалить', request_path(@request), method: :delete, data: {confirm: 'вы действительно хотите удалить заявку ?'}, class: 'btn red-light'
   .col.s4
-    = link_to 'Ответить на заявку', request_path(@request), class: 'edit-request-button', id: 'edit-request-button'
-  .col.s4
-    = render 'comments/list', commentable: @request, comment: @request.comments.build
-    /= link_to 'Добавить комментарий', request_path(@request), class: 'edit-request-button', id: 'edit-request-button'
+    = link_to 'Ответить на заявку', request_path(@request), class: 'edit-request-button btn red-light', id: 'edit-request-button'
+  .col.s2
+    = link_to 'Добавить комментарий', class: 'btn red-light', id: 'add-comment-button'
+.row
+  .col.s8
+    = render 'comments/list', comment: @request.comments.build

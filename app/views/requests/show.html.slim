@@ -1,6 +1,6 @@
 #request data-id="#{@request.id}"
   = render @request
-  .comments
+  /.comments
     /p
       - if @request.comments.present?
         =render @request.comments.sort_by_best

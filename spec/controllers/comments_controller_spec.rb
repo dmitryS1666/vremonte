@@ -20,15 +20,11 @@ RSpec.describe CommentsController, type: :controller do
     let(:form_params) { {} }
 
     let(:params) do
-      { comment: attributes_for(:comment).merge(form_params), format: :js }.merge(context_params)
+      { comment: attributes_for(:comment).merge(form_params), format: :js }
     end
 
     subject { post :create, params: params }
 
-    it_behaves_like 'comments #create', 'request' do
-      let(:context_params) { { request_id: request, context: 'request' } }
-      let(:context) { request }
-    end
 
   end
 end

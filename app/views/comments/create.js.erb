@@ -1,8 +1,8 @@
 <% if @comment.valid? %>
-  <% if @commentable.is_a? Request %>
+  // % if @commentable.is_a? Request %>
     $('.comments-list').append(
-        '<%= j render partial: @comment, locals: { comment: @comment} %>'
+        '<%= j render partial: 'comments/comment', locals: { comment: @comment} %>'
     );
-    $('.request input#comment_body').val('');
-  <% end %>
+    $('#request input#comment_body').val('');
+  // % end %>
 <% end %>

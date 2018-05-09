@@ -1,10 +1,12 @@
 /- if current_user
 .comments-form
-  = link_to 'Добавить комментарий'
 
-  - if commentable.is_a?(Request)
-    = form_for [commentable, comment], remote: true do |f|
-      = f.hidden_field :commentable, value: commentable.class.name
-      = f.label :body
+  - if comment
+    = form_for [Request, comment], remote: true do |f|
+      = f.label :body, 'Комментарий'
       = f.text_field :body
-      = f.submit 'Create comment'
+      = f.hidden_field :request_id
+      = f.button class: 'btn waves-effect waves-light'
+        | Добавить комментарий
+        i.material-icons.right
+          | send
