@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :requests, only: [:new, :create, :show, :delete] do
-    resources :comments, only: [:create], shallow: true
+  resources :requests, shallow: true do
+    resources :comments, only: [:create]
   end
 
   root to: "requests#index"

@@ -1,4 +1,5 @@
-.user-link
-  | User name:
-.comment-block id=dom_id(comment)
-  =comment.body
+.comment-block
+  .user-link
+    | User name:
+  .comment id=dom_id(comment)
+    =comment.body

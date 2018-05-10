@@ -14,14 +14,21 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
-// require unobtrusive_flash
-// require unobtrusive_flash_ui
+//= require bootstrap-modal
+//= require bootstrap-modalmanager
 //= require_tree .
-
-//UnobtrusiveFlash.flashOptions["timeout"] = 2000; // milliseconds
-//Materialize.toast('I am a toast!', 3000, 'rounded') // 'rounded' is the class I'm applying to the toast
 
 $('#alert_close').click(function(){
     $( "#alert_box" ).fadeOut( "slow", function() {
     });
 });
+
+$(document).on('turbolinks:load', function() {
+    open();
+});
+
+open = function() {
+    $('#edit_button').click(function () {
+        $('#edit_form').modal();
+    });
+};

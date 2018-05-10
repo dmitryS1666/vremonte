@@ -3,10 +3,10 @@
 
   - if comment
     = form_for [Request, comment], remote: true do |f|
-      = f.label :body, 'Комментарий'
+      = f.label :body, 'Текст сообщения'
       = f.text_field :body
       = f.hidden_field :request_id
-      = f.button class: 'btn waves-effect waves-light'
+      = f.button class: 'btn waves-light'
         | Добавить комментарий
         i.material-icons.right
           | send
