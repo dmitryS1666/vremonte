@@ -1,5 +1,5 @@
-class RequestsChannel < ApplicationCable::Channel
+class CommentsChannel < ApplicationCable::Channel
   def follow
-    stream_from 'requests'
+    stream_from 'comments'
   end
 end

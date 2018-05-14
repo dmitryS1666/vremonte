@@ -3,18 +3,18 @@
 //# You can use CoffeeScript in this file: http://coffeescript.org/
 
 var ready = function () {
-  App.cable.subscriptions.create('RequestsChannel', {
+  App.cable.subscriptions.create('CommentsChannel', {
     connected: function () {
       this.perform('follow');
     },
 
     received: function (data) {
-        var $request_list = $('.requests-list');
+        var $comment_list = $('.comments-list');
         if(/destroy=true/.test(data)){
             console.log(data);
         } else {
             console.log(data);
-            $request_list.append(data);
+            $comment_list.append(data);
         }
     }
   })

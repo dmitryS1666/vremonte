@@ -14,5 +14,12 @@ class CommentsController < ApplicationController
 
   def publish_comment
     return if @comment.errors.any?
+    ActionCable.server.broadcast(
+        'comments',
+        ApplicationController.render(
+            partial: 'comments/comment',
+            locals: { comment: @comment}
+        )
+    )
   end
 end

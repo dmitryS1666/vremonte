@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   before_action :load_request, only: %i(show edit update destroy)
-  after_action :publish_request, only: %i(create destroy)
+  after_action :publish_request, only: [:create]
+  # after_action :delete_publish_request, only: [:destroy]
 
   def index
     @requests = Request.all
@@ -59,4 +60,16 @@ class RequestsController < ApplicationController
         )
     )
   end
+
+  # TODO: create AC for destroy Request
+  # def delete_publish_request
+  #   return if @request.errors.any?
+  #   ActionCable.server.broadcast(
+  #       'requests',
+  #       ApplicationController.render(
+  #           partial: 'requests/list',
+  #           locals: { request: @request.id }
+  #       )
+  #   )
+  # end
 end

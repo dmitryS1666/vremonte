@@ -1,7 +1,8 @@
 h3 Все заявки
 .requests-list.collection
   - if @requests.present?
-    = render 'requests/list', requests: @requests
+    - @requests.each do |request|
+      = render 'requests/list', request: request
   - else
     div
       .col.s6.offset-s3.center

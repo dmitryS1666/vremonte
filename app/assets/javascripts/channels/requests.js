@@ -10,7 +10,12 @@ var ready = function () {
 
     received: function (data) {
         var $request_list = $('.requests-list');
-        $request_list.append(data);
+        if(/destroy=true/.test(data)){
+            console.log(data);
+        } else {
+            console.log(data);
+            $request_list.append(data);
+        }
     }
   })
 };
