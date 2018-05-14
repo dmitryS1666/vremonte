@@ -1,0 +1,8 @@
+$('.request-errors').html('')
+<% if @request.errors.present? %>
+  <% @request.errors.full_messages.each do |message| %>
+    $('.request-errors').append('<%= j message %>')
+  <% end %>
+<% else %>
+  $('.request').html('<%= j render @request %>')
+<% end %>

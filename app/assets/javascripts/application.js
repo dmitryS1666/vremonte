@@ -32,3 +32,6 @@ open = function() {
         $('#edit_form').modal();
     });
 };
+
+var App = App || {};
+App.cable = ActionCable.createConsumer();

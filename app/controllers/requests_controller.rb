@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   before_action :load_request, only: %i(show edit update destroy)
+  after_action :publish_request, only: %i(create destroy)
 
   def index
     @requests = Request.all
@@ -46,5 +47,16 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:title, :body, :owner_id)
+  end
+
+  def publish_request
+    return if @request.errors.any?
+    ActionCable.server.broadcast(
+        'requests',
+        ApplicationController.render(
+            partial: 'requests/list',
+            locals: { request: @request }
+        )
+    )
   end
 end

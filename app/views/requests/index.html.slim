@@ -1,9 +1,7 @@
 h3 Все заявки
-.questions-list.collection
+.requests-list.collection
   - if @requests.present?
-    - @requests.each do |request|
-      .collection-item id=dom_id(request)
-        = link_to request.title, request
+    = render 'requests/list', requests: @requests
   - else
     div
       .col.s6.offset-s3.center
