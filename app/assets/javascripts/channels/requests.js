@@ -23,21 +23,21 @@ var ready = function () {
 var validation = function () {
     if($('#new_request').length) {
         var input_title = document.getElementById('request_title');
-        var input_body = $('#request_body');
+        var input_body = document.getElementById('request_body');
 
         $('#request_title').bind('input', function() {
             if(input_title.value.length < 5) {
-                input_title.className += " invalid";
+                input_title.className = "invalid";
             } else {
-                input_title.className -= " invalid";
+                input_title.className = "valid";
             }
         });
 
-        $('#input_body').bind('input', function() {
+        $('#request_body').bind('input', function() {
             if(input_body.value.length < 10) {
-                input_body.className += " invalid";
+                input_body.className = "materialize-textarea invalid";
             } else {
-                input_body.className -= " invalid";
+                input_body.className = "materialize-textarea valid";
             }
         });
     }
