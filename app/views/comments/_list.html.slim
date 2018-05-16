@@ -1,7 +1,7 @@
 .comments-container
   .comments-list
     h4 Комментарии
-    - if @comments.present?
+    - if @comments.persisted?
       - @comments.each do |comment|
         - if comment.id
           = render partial: comment, comment: comment
