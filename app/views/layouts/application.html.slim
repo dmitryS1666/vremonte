@@ -8,9 +8,9 @@ html
 
   body
   .navbar-fixed
-    =render 'shared/nav'
-  /.flash
-    = render_flash
+    = render 'shared/nav'
+  .flash
+    = render 'shared/flash'
   .container.main
     = yield
 

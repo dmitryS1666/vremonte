@@ -25,6 +25,7 @@ gem 'material_icons'
 gem 'unobtrusive_flash', '>=3'
 gem 'bootstrap-modal-rails'
 
+gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
 
