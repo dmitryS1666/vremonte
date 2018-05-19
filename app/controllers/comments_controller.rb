@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :request_id)
+    params.require(:comment).permit(:body)
   end
 
   def publish_comment

@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  # before_action :authenticate_user!, except: [:index, :show]
   before_action :load_request, only: %i(show edit update destroy)
   after_action :publish_request, only: [:create]
   # after_action :delete_publish_request, only: [:destroy]
@@ -9,7 +9,7 @@ class RequestsController < ApplicationController
   end
 
   def show
-    @comments = Comment.where(request_id: @request)
+    @comments = @request.comments
   end
 
   def new

@@ -1,9 +1,9 @@
 .comments-container
   .comments-list
     h4 Комментарии
-    - if @comments.persisted?
+    - if @comments.present?
       - @comments.each do |comment|
         - if comment.id
           = render partial: comment, comment: comment
 
-  = render partial: 'comments/form', locals: { comment: comment }
+  = render partial: 'comments/form', locals: { request: request, comment: comment }

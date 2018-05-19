@@ -2,10 +2,10 @@
 .comments-form
 
   - if comment
-    = form_for [Request, comment], remote: true do |f|
+    = form_for [request, comment], remote: true do |f|
       = f.label :body, 'Текст сообщения'
       = f.text_field :body
-      = f.hidden_field :request_id
+      /= f.hidden_field :request
       = f.button class: 'btn waves-light'
         | Добавить комментарий
         i.material-icons.right
