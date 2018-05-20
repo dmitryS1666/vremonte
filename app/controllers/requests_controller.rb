@@ -1,8 +1,11 @@
 class RequestsController < ApplicationController
-  # before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :load_request, only: %i(show edit update destroy)
   after_action :publish_request, only: [:create]
   # after_action :delete_publish_request, only: [:destroy]
+
+  authorize_resource
+  respond_to :html, :json
 
   def index
     @requests = Request.all
@@ -20,7 +23,7 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
-
+    @request.user = current_user
     if @request.save
       redirect_to @request
     else
@@ -37,7 +40,7 @@ class RequestsController < ApplicationController
   end
 
   def destroy
-    @request.destroy
+    @request.destroy if current_user.owner?(@request)
     redirect_to root_path
   end
 
@@ -48,7 +51,7 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:title, :body, :owner_id)
+    params.require(:request).permit(:title, :body, :user_id)
   end
 
   def publish_request

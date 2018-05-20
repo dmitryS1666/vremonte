@@ -1,9 +1,13 @@
 class CommentsController < ApplicationController
   after_action :publish_comment, only: [:create]
 
+  authorize_resource
+  respond_to :html, :json
+
   def create
     @comment = Comment.new(comment_params)
     @comment.request_id = params[:request_id]
+    @comment.user = current_user
     @comment.save
   end
 

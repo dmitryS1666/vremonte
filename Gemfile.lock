@@ -54,6 +54,7 @@ GEM
       railties (>= 3.1)
     builder (3.2.3)
     byebug (10.0.2)
+    cancancan (2.2.0)
     capybara (3.0.3)
       addressable
       mini_mime (>= 0.1.3)
@@ -301,6 +302,7 @@ DEPENDENCIES
   bootsnap
   bootstrap-modal-rails
   byebug
+  cancancan
   capybara
   capybara-email
   capybara-webkit

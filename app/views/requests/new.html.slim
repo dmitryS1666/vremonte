@@ -1,7 +1,6 @@
 = render 'common/errors', resource: @request
 = form_for @request do |f|
   .row
-    = f.hidden_field :owner_id, value: 1
     .input-field.col.s8
       = f.text_field :title, placeholder: 'Название заявки'
     .input-field.col.s8
