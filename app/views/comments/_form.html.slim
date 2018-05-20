@@ -5,7 +5,6 @@
     = form_for [request, comment], remote: true do |f|
       = f.label :body, 'Текст сообщения'
       = f.text_field :body
-      /= f.hidden_field :request
       = f.button class: 'btn waves-light'
         | Добавить комментарий
         i.material-icons.right
