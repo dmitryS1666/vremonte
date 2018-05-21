@@ -1,5 +1,20 @@
-p class="notice"
-  = notice
+-if notice.present? || alert.present?
+  #error_explanation
+    #alert_box.row
+      h4 Ошибка
+      .col.s8.m8
+        .card.red.darken-1
+          .row
+            .col.s8.m8
+              .card-content.white-text
+                = notice
+                = alert
+          col.s8.m2
+            i.material-icons.right#alert_close
+              | close
 
-p class="alert"
-  = alert
+/p class="notice"
+/  = notice
+/
+/p class="alert"
+/  = alert

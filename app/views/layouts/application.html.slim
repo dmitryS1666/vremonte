@@ -7,13 +7,15 @@ html
     = csrf_meta_tags
 
   body
-  .navbar-fixed
-    = render 'shared/nav'
-  .flash
-    = render 'shared/flash'
-  .container.main
-    = yield
+    .navbar-fixed
+      = render 'shared/nav'
 
-  .footer
-    = javascript_include_tag 'application'
-    = yield :scripts
+    .container.main
+      .flash
+        = render 'shared/flash'
+
+      = yield
+
+    .footer
+      = javascript_include_tag 'application'
+      = yield :scripts
