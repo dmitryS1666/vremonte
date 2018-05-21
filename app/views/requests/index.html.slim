@@ -1,0 +1,12 @@
+h3 Все заявки
+.requests-list.collection
+  - if @requests.present?
+    - @requests.each do |request|
+      = render 'requests/list', request: request
+  - else
+    div
+      .col.s6.offset-s3.center
+        p Заявок нет
+
+.action-btn style="bottom: 45px; right: 24px;"
+  = link_to 'Создать заявку', new_request_path, class: 'btn waves-effect waves-light'

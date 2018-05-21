@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title VRemonte
+    = stylesheet_link_tag 'application'
+    = action_cable_meta_tag
+    = csrf_meta_tags
+
+  body
+    .navbar-fixed
+      = render 'shared/nav'
+
+    .container.main
+      .flash
+        = render 'shared/flash'
+
+      = yield
+
+    .footer
+      = javascript_include_tag 'application'
+      = yield :scripts

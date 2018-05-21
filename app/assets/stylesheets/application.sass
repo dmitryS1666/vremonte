@@ -12,4 +12,24 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap-modal
  */
+
+
+@import "materialize"
+@import "material_icons"
+@import "bootstrap-modal"
+
+body
+  background: white
+
+.no-events
+  pointer-events: none
+
+#alert_close
+  position: absolute
+  right: 10px
+  top: 10px
+  font-size: 20px
+  color: white
+  cursor: pointer

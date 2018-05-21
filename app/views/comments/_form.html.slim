@@ -1,0 +1,12 @@
+/- if current_user
+- if can?(:create, comment)
+  .comments-form
+
+    - if comment
+      = form_for [request, comment], remote: true do |f|
+        = f.label :body, 'Текст сообщения'
+        = f.text_field :body
+        = f.button class: 'btn waves-light'
+          | Добавить комментарий
+          i.material-icons.right
+            | send

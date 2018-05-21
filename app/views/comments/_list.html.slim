@@ -1,0 +1,9 @@
+.comments-container
+  .comments-list
+    h4 Комментарии
+    - if @comments.present?
+      - @comments.each do |comment|
+        - if comment.id
+          = render partial: comment, user: comment.user_id, comment: comment
+
+  = render partial: 'comments/form', locals: { request: request, comment: comment }

@@ -11,6 +11,27 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require activestorage
 //= require turbolinks
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap-modal
+//= require bootstrap-modalmanager
 //= require_tree .
+
+$('#alert_close').click(function(){
+    $( "#alert_box" ).fadeOut( "slow", function() {
+    });
+});
+
+$(document).on('turbolinks:load', function() {
+    open();
+});
+
+open = function() {
+    $('#edit_button').click(function () {
+        $('#edit_form').modal();
+    });
+};
+
+var App = App || {};
+App.cable = ActionCable.createConsumer();
