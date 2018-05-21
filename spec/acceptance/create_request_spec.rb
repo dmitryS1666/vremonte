@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 feature 'Create request', %q{
-		In order to get answer from community
+		In order to get executor your request
 		As an authenticated user
-		I want to be able to ask requests
+		I want to be able to add requests
 	} do
 
   given!(:user) { create(:user) }
