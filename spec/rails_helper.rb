@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'capybara/email/rspec'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
@@ -20,8 +21,6 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
-  config.include Devise::TestHelpers, type: :controller
-
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
@@ -39,8 +38,13 @@ RSpec.configure do |config|
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
+
+  config.include FactoryBot::Syntax::Methods
+  config.include Devise::TestHelpers, type: :controller
+  config.include(OmniauthMacros)
 end
 
+OmniAuth.config.test_mode = true
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec

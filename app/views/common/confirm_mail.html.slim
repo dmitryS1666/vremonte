@@ -1,0 +1,5 @@
+= form_tag users_auth_sign_up_path, method: :post do
+  = label_tag 'auth_info_email', 'Email'
+  = email_field 'auth[info]', :email
+
+  = submit_tag 'Confirm email'
