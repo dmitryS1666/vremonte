@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :requests, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :authorizations, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, omniauth_providers: %i[github vkontakte]
