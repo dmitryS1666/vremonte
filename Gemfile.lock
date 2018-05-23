@@ -55,7 +55,7 @@ GEM
     builder (3.2.3)
     byebug (10.0.2)
     cancancan (2.2.0)
-    capybara (3.0.3)
+    capybara (3.1.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -154,12 +154,11 @@ GEM
     omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
-    omniauth-github (1.3.0)
-      omniauth (~> 1.5)
-      omniauth-oauth2 (>= 1.4.0, < 2.0)
     omniauth-oauth2 (1.5.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
+    omniauth-vkontakte (1.4.1)
+      omniauth-oauth2 (~> 1.2)
     orm_adapter (0.5.0)
     parser (2.5.1.0)
       ast (~> 2.4.0)
@@ -320,7 +319,7 @@ DEPENDENCIES
   material_icons
   materialize-sass
   omniauth
-  omniauth-github
+  omniauth-vkontakte
   pg (~> 0.18)
   puma (~> 3.11)
   rails (~> 5.2.0)
