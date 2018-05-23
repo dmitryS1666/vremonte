@@ -1,0 +1,8 @@
+$('.user-errors').html('')
+<% if @user.errors.present? %>
+  <% @user.errors.full_messages.each do |message| %>
+    $('.user-errors').append('<%= j message %>')
+  <% end %>
+<% else %>
+  $('.user').html('<%= j render @user %>')
+<% end %>

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  resource :users
+
   mount ActionCable.server => '/cable'
 
   root to: "requests#index"
