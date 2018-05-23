@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :authorizations, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, omniauth_providers: %i[github vkontakte]
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, omniauth_providers: %i[vkontakte]
 
   def owner_of?(resource)
     resource.user_id == self.id

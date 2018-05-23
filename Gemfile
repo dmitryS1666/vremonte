@@ -28,7 +28,6 @@ gem 'bootstrap-modal-rails'
 gem 'devise'
 gem 'cancancan'
 gem 'omniauth'
-gem 'omniauth-github'
 gem 'omniauth-vkontakte'
 
 group :development, :test do

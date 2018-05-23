@@ -1,7 +1,5 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  before_action :sign_from_omniauth, only: %i[github vkontakte sign_up]
-
-  def github; end
+  before_action :sign_from_omniauth, only: %i[vkontakte sign_up]
 
   def vkontakte; end
 
