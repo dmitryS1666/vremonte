@@ -5,11 +5,11 @@ Rails.application.routes.draw do
     post '/users/auth/sign_up' => 'omniauth_callbacks#sign_up'
   end
 
+  resources :users#, only: [:show, :edit, :destroy]
+
   resources :requests, shallow: true do
     resources :comments, only: [:create]
   end
-
-  resource :users
 
   mount ActionCable.server => '/cable'
 

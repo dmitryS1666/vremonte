@@ -15,7 +15,7 @@
     .col.s2
       = link_to 'Удалить', request_path(request), method: :delete, data: {confirm: 'вы действительно хотите удалить заявку ?'}, class: 'btn red-light'
     .col.s4
-      = link_to 'Ответить на заявку', request_path(request), class: 'edit-request-button btn red-light', id: 'edit-request-button'
+      = link_to 'Ответить на заявку', request_path(request), class: 'edit-request-button btn red lighten-1', id: 'edit-request-button'
 .row
   .col.s8
     = render 'comments/list', request: request, comment: request.comments.build

@@ -14,7 +14,7 @@ class Ability
   end
 
   def guest_abilities
-    can :read, :all
+    can :read, [Request, Comment]
   end
 
   def admin_abilities
@@ -26,9 +26,14 @@ class Ability
     can :create, [Request, Comment]
     can :comment, [Request]
 
+    can :show, [User]
+    can :update, [User]
+    can :destroy, [User]
+
     alias_action :update, :destroy, to: :subject_pull
     can :subject_pull, [Request, Comment] do |type|
       user.owner_of?(type)
     end
+
   end
 end

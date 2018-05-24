@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
 
   describe 'GET #show' do
+    before{ sign_in user }
     let(:user) { create(:user) }
     before { get :show, params: { id: user }}
 
@@ -16,6 +17,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'GET #edit' do
+    before{ sign_in user }
     let(:user) { create(:user) }
     before { get :edit, params: { id: user }}
 
@@ -28,53 +30,40 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  # describe 'PATH #update' do
-  #   let(:request) { create(:request) }
-  #
-  #   context 'valid attributes' do
-  #     it 'assigns the requested "request" to @request' do
-  #       patch :update, params: { id: request, request: attributes_for(:request) }
-  #       expect(assigns(:request)).to eq request
-  #     end
-  #
-  #     it 'change request attributes' do
-  #       patch :update, params: { id: request, request: { title: 'new title request', body: 'new body', owner_id: 1} }
-  #       request.reload
-  #       expect(request.title).to eq 'new title request'
-  #       expect(request.body).to eq 'new body'
-  #     end
-  #
-  #     it 'redirect to the update request' do
-  #       patch :update, params: { id: request, request: attributes_for(:request) }
-  #       expect(response).to redirect_to request_path(assigns(:request))
-  #     end
-  #   end
-  #
-  #   context 'invalid attributes' do
-  #     before { patch :update, params: { id: request, request: { title: 'new string', body: nil, owner_id: nil }} }
-  #     it 'does not change request attributes' do
-  #       request.reload
-  #       expect(request.title).to eq 'MyStringTitle'
-  #       expect(request.body).to eq 'MyText'
-  #     end
-  #
-  #     it 're-renders edit view' do
-  #       expect(response).to render_template :edit
-  #     end
-  #   end
-  # end
+  describe 'PATH #update' do
+    let(:user) { create(:user) }
 
+    context 'valid attributes' do
+      it 'assigns the requested "user" to @user' do
+        patch :update, params: { id: user, user: attributes_for(:user) }
+        expect(assigns(:user)).to eq user
+      end
+
+      it 'change user attributes' do
+        patch :update, params: { id: user, user: { email: 'new@email.com' } }
+        user.reload
+        expect(user.email).to eq 'new@email.com'
+      end
+
+      it 'redirect to the update user' do
+        patch :update, params: { id: user, user: attributes_for(:user) }
+        expect(response).to redirect_to user_path(assigns(:user))
+      end
+    end
+  end
 
   describe 'DELETE #destroy' do
-    before { request }
+    before{ sign_in user }
+
+    let(:user) { create(:user) }
 
     it 'deletes user' do
       expect { delete :destroy, params: { id: user } }.to change(User, :count).by(-1)
     end
 
-    it 'redirect to index view' do
+    it 'redirect to sign_in view' do
       delete :destroy, params: { id: user }
-      expect(response).to redirect_to user
+      expect(response).to redirect_to new_user_session_path
     end
   end
 

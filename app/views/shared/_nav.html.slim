@@ -6,7 +6,7 @@ nav
         ul#nav-mobile.hide-on-med-and-down.right
           - if user_signed_in?
             li
-              = current_user.email
+              = link_to current_user.email, current_user
             li
               = link_to 'Выйти', destroy_user_session_path, method: :delete
           - else

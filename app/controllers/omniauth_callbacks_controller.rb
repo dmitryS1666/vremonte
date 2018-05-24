@@ -1,5 +1,9 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :sign_from_omniauth, only: %i[vkontakte sign_up]
+
+  authorize_resource
+  respond_to :html, :json
 
   def vkontakte; end
 

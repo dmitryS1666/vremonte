@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
-  before_action :load_user, only: %i(show edit destroy)
+  before_action :authenticate_user!, except: %i(index show edit)
+  before_action :load_user, only: %i(show edit update destroy)
 
   authorize_resource
   respond_to :html, :json
@@ -19,16 +19,17 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy if current_user
-    redirect_to root_path
+    redirect_to new_user_session_path
   end
 
   private
-  def load_user
-    @user = User.find(params[:id])
-  end
-
   def user_params
     params.require(:user).permit(:email)
+  end
+
+  def load_user
+    @user = User.find(current_user.id)
+    # @user = User.find(params[:id])
   end
 
 end
