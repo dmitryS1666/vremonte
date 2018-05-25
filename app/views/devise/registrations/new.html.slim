@@ -38,23 +38,23 @@ h2 Регистрация
       .field
         = f.label :email
         br
-        = f.email_field :email, autofocus: true, autocomplete: 'email'
+        = f.email_field :email, autofocus: true, autocomplete: 'email', id: 'av'
       .field
         = f.label :Пароль
         /- if @minimum_password_length
           = @minimum_password_length characters minimum
         br
-        = f.password_field :password, autocomplete: 'off'
+        = f.password_field :password, autocomplete: 'off', id: 'av_password'
 
       .field
         = f.label :Поддтвердите_пароль
         br
-        = f.password_field :password_confirmation, autocomplete: 'off'
+        = f.password_field :password_confirmation, autocomplete: 'off', id: 'av_password_confirmation'
 
       .field
         = f.label :Дополнительное_описание
         br
-        = f.text_field :description, autocomplete: 'off'
+        = f.text_field :description, autocomplete: 'off', id: 'av_description'
 
       = f.button class: 'actions btn waves-light'
         | Зарегистрировать Автосервис

@@ -6,12 +6,12 @@ feature 'User sign in', %q{
 			I want to be able to sign in
 		} do
 
-  scenario 'Refistered user try to sign in' do
+  scenario 'Registered user try to sign in' do
     User.create!(email: 'user@mail.com', password: '12345678')
 
     visit new_user_session_path
     fill_in 'Email', with: 'user@mail.com'
-    fill_in 'Password', with: '12345678'
+    fill_in 'user_password', with: '12345678'
     click_on 'Войти'
 
     expect(page).to have_content 'Signed in successfully.'
@@ -21,10 +21,10 @@ feature 'User sign in', %q{
   scenario 'Non-registered user try to sign in' do
     visit new_user_session_path
     fill_in 'Email', with: 'wrong@mail.com'
-    fill_in 'Password', with: '12345678'
+    fill_in 'user_password', with: '12345678'
     click_on 'Войти'
 
-    expect(page).to have_content 'Invalid email or password.'
+    expect(page).to have_content 'Invalid Email or password.'
     expect(current_path).to eq new_user_session_path
   end
 
