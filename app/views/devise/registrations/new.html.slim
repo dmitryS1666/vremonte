@@ -1,28 +1,62 @@
 h2 Регистрация
 
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
+.row
+  .col.s6
+    h5 Для пользователя
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
 
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: 'email'
+      .field
+        = f.label :email
+        br
+        = f.email_field :email, autofocus: true, autocomplete: 'email'
 
-  .field
-    = f.label :Пароль
-    /- if @minimum_password_length
-      = @minimum_password_length characters minimum
-    br
-    = f.password_field :password, autocomplete: 'off'
+      .field
+        = f.label :Пароль
+        /- if @minimum_password_length
+          = @minimum_password_length characters minimum
+        br
+        = f.password_field :password, autocomplete: 'off'
 
-  .field
-    = f.label :Поддтвердите_пароль
-    br
-    = f.password_field :password_confirmation, autocomplete: 'off'
+      .field
+        = f.label :Поддтвердите_пароль
+        br
+        = f.password_field :password_confirmation, autocomplete: 'off'
 
-  = f.button class: 'actions btn waves-light'
-    | Зарегистрироваться
-    i.material-icons.right
-      | send
+      = f.button class: 'actions btn waves-light'
+        | Зарегистрироваться
+        i.material-icons.right
+          | send
 
-= render 'devise/shared/links'
+    = render 'devise/shared/links'
+
+  .col.s6
+    h5 Для автосервиса
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+      = f.hidden_field :avservice, value: true
+      .field
+        = f.label :email
+        br
+        = f.email_field :email, autofocus: true, autocomplete: 'email'
+      .field
+        = f.label :Пароль
+        /- if @minimum_password_length
+          = @minimum_password_length characters minimum
+        br
+        = f.password_field :password, autocomplete: 'off'
+
+      .field
+        = f.label :Поддтвердите_пароль
+        br
+        = f.password_field :password_confirmation, autocomplete: 'off'
+
+      .field
+        = f.label :Дополнительное_описание
+        br
+        = f.text_field :description, autocomplete: 'off'
+
+      = f.button class: 'actions btn waves-light'
+        | Зарегистрировать Автосервис
+        i.material-icons.right
+          | send

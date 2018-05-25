@@ -22,7 +22,11 @@ class User < ApplicationRecord
 
     unless user
       password = Devise.friendly_token[0, 20]
-      user = User.new(email: email, password: password, password_confirmation: password)
+      if auth.info[:avservice]
+        user = User.new(email: email, password: password, password_confirmation: password, avservice: auth.info[:avservice], description: auth.info[:description])
+      else
+        user = User.new(email: email, password: password, password_confirmation: password)
+      end
       user.skip_confirmation!
       user.save!
       user.create_authorization(auth)
