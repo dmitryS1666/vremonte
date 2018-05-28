@@ -1,10 +1,12 @@
 class User < ApplicationRecord
   has_many :requests, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :answers, dependent: :destroy
   has_many :authorizations, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, omniauth_providers: %i[vkontakte]
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
+         :omniauthable, omniauth_providers: %i[vkontakte]
 
   def owner_of?(resource)
     resource.user_id == self.id
@@ -21,7 +23,11 @@ class User < ApplicationRecord
 
     unless user
       password = Devise.friendly_token[0, 20]
-      user = User.new(email: email, password: password, password_confirmation: password)
+      if auth.info[:avservice]
+        user = User.new(email: email, password: password, password_confirmation: password, avservice: auth.info[:avservice], description: auth.info[:description])
+      else
+        user = User.new(email: email, password: password, password_confirmation: password)
+      end
       user.skip_confirmation!
       user.save!
       user.create_authorization(auth)

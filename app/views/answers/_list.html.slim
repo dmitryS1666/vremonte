@@ -1,0 +1,19 @@
+.answers-container
+  .answers-list
+    h4 Ответы
+    - if can?(:update, @request) && @answers.present?
+      - @answers.each do |answer|
+        - if answer.id
+          = render partial: answer, user: answer.user_id, answer: answer
+
+  - if current_user.avservice
+    - flag = true
+    - @answers.each do |answer|
+      - if answer.user_id == current_user.id && answer.request_id == request.id
+        - flag = false
+
+    - if flag
+      = render partial: 'answers/form', locals: {request: request, answer: request.answers.build}
+    - else
+      p А здесь добавить счетчик ответов на заявку
+      p Вы уже дали свой ответ

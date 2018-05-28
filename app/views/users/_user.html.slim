@@ -1,0 +1,43 @@
+- if can?(:update, user)
+  .row
+    .col.s8
+      .user-title
+        h4
+          =user.email
+  .row
+    .col.s8
+      - if user.avservice
+        .user-email
+          =user.email
+        .user-description
+          =user.description
+
+      - else
+        .user-email
+          =user.email
+
+      .row
+        .col.s4
+          = link_to 'Редактировать', user_path(user), class: 'btn waves-light', remote: true, 'data-toggle' => 'modal', 'data-target' => 'edit_form', id: 'edit_button'
+        .col.s4
+          = link_to 'Удалить', user_path(user), method: :delete, data: {confirm: 'вы действительно хотите удалить ПРОФИЛЬ ?'}, class: 'btn red lighten-1'
+
+  -if user.avservice
+    #edit_form.modal
+      =form_for user, remote: true do |f|
+        .row
+          .col.s12
+            h5 Изменить профиль Автосервиса
+            = f.text_field :email
+            = f.text_field :description
+            /= f.text_area :body, class: 'materialize-textarea'
+            = f.submit 'Сохранить', class: 'btn waves-light'
+  - else
+    #edit_form.modal
+      = form_for user, remote: true do |f|
+        .row
+          .col.s12
+            h5 Изменить профиль
+            = f.text_field :email
+            /= f.text_area :body, class: 'materialize-textarea'
+            = f.submit 'Сохранить', class: 'btn waves-light'

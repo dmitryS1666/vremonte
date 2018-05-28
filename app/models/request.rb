@@ -1,5 +1,6 @@
 class Request < ApplicationRecord
   has_many :comments
+  has_many :answers
   belongs_to :user
 
   validates :title, presence: true, length: { minimum: 5 }
