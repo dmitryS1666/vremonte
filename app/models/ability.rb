@@ -23,7 +23,7 @@ class Ability
 
   def user_abilities
     guest_abilities
-    can :create, [Request, Comment]
+    can :create, [Request, Comment, Answer]
     can :comment, [Request]
 
     can :show, [User]
@@ -31,7 +31,7 @@ class Ability
     can :destroy, [User]
 
     alias_action :update, :destroy, to: :subject_pull
-    can :subject_pull, [Request, Comment] do |type|
+    can :subject_pull, [Request, Comment, Answer] do |type|
       user.owner_of?(type)
     end
 

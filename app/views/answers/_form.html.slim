@@ -1,0 +1,11 @@
+- if can?(:create, answer)
+  .answers-form
+
+    - if answer
+      = form_for [request, answer], remote: true do |f|
+        = f.label :body, 'Текст сообщения'
+        = f.text_field :body
+        = f.button class: 'btn blue lighten-1', id: 'answer-button'
+          | Отправить ответ
+          i.material-icons.right
+            | send

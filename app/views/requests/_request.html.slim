@@ -7,24 +7,27 @@
   .col.s8
     .request-body
       =request.body
-      /=render 'common/subscription', resource: @question
+
 - if can?(:update, @request)
   .row
     .col.s2
       = link_to 'Редактировать', request_path(request), class: 'btn waves-light', remote: true, 'data-toggle' => 'modal', 'data-target' => 'edit_form', id: 'edit_button'
     .col.s2
       = link_to 'Удалить', request_path(request), method: :delete, data: {confirm: 'вы действительно хотите удалить заявку ?'}, class: 'btn red-light'
-    .col.s4
-      = link_to 'Ответить на заявку', request_path(request), class: 'edit-request-button btn red lighten-1', id: 'edit-request-button'
+
 .row
   .col.s8
     = render 'comments/list', request: request, comment: request.comments.build
 
+.row
+  .col.s8
+    = render 'answers/list', request: request
+
 #edit_form.modal
-  =form_for request, remote: true do |f|
+  = form_for request, remote: true do |f|
     .row
       .col.s12
-        h5 Изменить заявку
+        h5 изменить заявку
         = f.text_field :title
         = f.text_area :body, class: 'materialize-textarea'
         = f.submit 'Сохранить', class: 'btn waves-light'

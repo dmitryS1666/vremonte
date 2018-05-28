@@ -13,6 +13,7 @@ class RequestsController < ApplicationController
 
   def show
     @comments = @request.comments
+    @answers = @request.answers
   end
 
   def new
