@@ -29,6 +29,7 @@ gem 'devise'
 gem 'cancancan'
 gem 'omniauth'
 gem 'omniauth-vkontakte'
+gem 'doorkeeper', '4.2.6'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -38,6 +39,7 @@ group :development, :test do
   gem 'faker'
   gem 'letter_opener'
   gem 'capybara-webkit' # sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
+  gem 'json_spec'
 end
 
 group :test do
