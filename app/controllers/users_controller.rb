@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   authorize_resource
   respond_to :html, :json
 
+  def index
+    @users = User.all
+  end
+
   def show; end
 
   def edit; end
@@ -28,8 +32,8 @@ class UsersController < ApplicationController
   end
 
   def load_user
-    @user = User.find(current_user.id)
-    # @user = User.find(params[:id])
+    # @user = User.find(current_user.id)
+    @user = User.find(params[:id])
   end
 
 end

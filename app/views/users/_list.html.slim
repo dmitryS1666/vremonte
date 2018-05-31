@@ -1,0 +1,4 @@
+- users.each do |user|
+  -if user.avservice
+    .collection-item id=dom_id(user)
+      = link_to user.email, user
