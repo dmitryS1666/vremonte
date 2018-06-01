@@ -13,13 +13,17 @@ Rails.application.routes.draw do
     resources :answers, only: [:create]
   end
 
-  # namespace :api do
-  #   namespace :v1 do
-  #     resource :profiles, only: :index do
-  #       get :me, on: :collection
-  #     end
-  #   end
-  # end
+  namespace :api do
+    namespace :v1 do
+      resources :profiles, only: :index do
+        get :me, on: :collection
+      end
+      resources :requests, shallow: true do
+        resources :answers, only: [:create]
+        resources :comments, only: [:create]
+      end
+    end
+  end
 
   mount ActionCable.server => '/cable'
 
